@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && npm run generate-images && astro build",
+    "build": "astro check && pnpm run generate-images && astro build",
+    "generate-images": "node scripts/generate-images.js",
     "preview": "astro preview",
     "astro": "astro"
   },
