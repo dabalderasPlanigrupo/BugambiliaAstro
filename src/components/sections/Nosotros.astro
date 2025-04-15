@@ -3,15 +3,13 @@ import Button from '@components/common/Button.astro';
 import TitleDivider from '@components/common/TitleDivider.astro';
 import ImagesGrid from '@components/common/ImagesGrid.astro';
 
-const images = await Astro.glob(
-  '/src/images/homeGallery/*.{jpeg,jpg,png,gif,webp}'
-).then((files) => {
-  return files.map((file) => file.default);
-});
+// Importar rutas generadas dinámicamente
+import { images } from 'src/data/images/homeGallery';
 
 interface Props {
   class?: string;
 }
+
 const { class: className } = Astro.props;
 ---
 
@@ -19,6 +17,7 @@ const { class: className } = Astro.props;
   <div class='container'>
     <TitleDivider class='text-secondary mb-8'> Nosotros </TitleDivider>
 
+    <!-- Pasar las imágenes al componente ImagesGrid -->
     <ImagesGrid class='mb-8' images={images} enableThreeColumns />
     <div class='flex justify-center'>
       <Button
